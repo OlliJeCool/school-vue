@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <div id="app">
+        <input v-model="username" placeholder="Username">
+        <input v-model="email" placeholder="Email">
+        <p>Check teachers you like:</p>
+        <div v-for="teacher in teachers">
+            <input type="checkbox" :id="teacher" :value="teacher" v-model="checkedTeachers">
+            <label :for="teacher">{{ teacher }}</label>
+        </div>
+        Select your favourite classes:
+        <br>
+        <div>
+            
+            <select v-model="checkedClasses" multiple>
+                <option v-for="trida in classes">{{ trida }}</option>
+            </select>
+        </div>
+        <div>
+            Do you want to graduate?
+            <input type="radio" id="yes" value="yes" v-model="checkedGraduation">
+            <label for="yes">Yes</label>
+            <input type="radio" id="no" value="no" v-model="checkedGraduation">
+            <label for="no">No</label>
+        </div>
+        <button @click="submit">Submit</button>
+        <button @click="clear">Clear</button>
+        <p v-if="isSubmited">{{ user }}</p>
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="form.js"></script>
+</body>
+</html>
